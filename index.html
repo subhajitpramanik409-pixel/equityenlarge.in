@@ -143,18 +143,31 @@ footer a{
 }
 
 /* MOBILE */
+
 @media(max-width:800px){
-  .hero{
+  .nav-links{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#020617;
     flex-direction:column;
     text-align:center;
+    display:none;
+    padding:20px 0;
   }
-  .hero img{
-    margin-top:40px;
+
+  .nav-links a{
+    display:block;
+    margin:15px 0;
+    font-size:1.1rem;
   }
-  .hero-text h2{
-    font-size:2.3rem;
+
+  .menu-btn{
+    display:block;
   }
 }
+
 </style>
 </head>
 
@@ -162,7 +175,8 @@ footer a{
 
 <nav>
   <h1>Equity Enlarge</h1>
-  <div class="nav-links">
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="analysis.html">Analysis</a>
     <a href="course.html">Courses</a>
