@@ -2,133 +2,149 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Equity Enlarge – Smarter Stock Market Analysis</title>
+<title>Equity Enlarge – Smart Stock Market Analysis</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Equity Enlarge provides stock market chart analysis, indicators, scanners, courses and premium newsletter for Indian traders.">
+<meta name="description" content="Equity Enlarge provides chart analysis, stock scanners, trading courses and premium market insights for Indian traders.">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #0b0f19;
-    color: #ffffff;
+body{
+    margin:0;
+    font-family:Segoe UI, sans-serif;
+    background:#0b0f19;
+    color:white;
 }
-header {
-    padding: 60px 10%;
-    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    text-align: center;
+a{color:#00e5ff;text-decoration:none;}
+nav{
+    background:#000;
+    padding:20px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
+nav a{
+    margin:15px;
+    color:white;
+    font-weight:500;
 }
-header p {
-    font-size: 1.2rem;
-    color: #cfd8dc;
+.hero{
+    padding:80px 10%;
+    background:linear-gradient(135deg,#000428,#004e92);
 }
-.btn {
-    display: inline-block;
-    margin: 20px 10px;
-    padding: 14px 28px;
-    background: #00e5ff;
-    color: #000;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
+.hero h1{
+    font-size:3rem;
 }
-.btn.alt {
-    background: transparent;
-    color: #00e5ff;
-    border: 2px solid #00e5ff;
+.hero p{
+    color:#cfd8dc;
+    font-size:1.2rem;
+    max-width:600px;
 }
-
-.section {
-    padding: 60px 10%;
-    text-align: center;
+.btn{
+    background:#00e5ff;
+    color:black;
+    padding:14px 25px;
+    border:none;
+    border-radius:5px;
+    font-size:1rem;
+    margin-top:20px;
+    cursor:pointer;
 }
-.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-    gap: 30px;
-    margin-top: 40px;
+.section{
+    padding:70px 10%;
 }
-.card {
-    background: #131a2b;
-    padding: 30px;
-    border-radius: 15px;
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
 }
-.card h3 {
-    color: #00e5ff;
+.card{
+    background:#111827;
+    padding:30px;
+    border-radius:10px;
 }
-
-.interrupt {
-    background: #111827;
-    padding: 50px 10%;
-    text-align: center;
-    font-size: 1.5rem;
-    line-height: 1.6;
+.interrupt{
+    background:#000;
+    text-align:center;
+    padding:60px 10%;
+    font-size:1.5rem;
+    color:#00e5ff;
 }
-
-.footer {
-    background: #000;
-    padding: 40px 10%;
-    text-align: center;
-    color: #aaa;
-    font-size: 0.9rem;
+.footer{
+    background:#000;
+    padding:40px 10%;
+    text-align:center;
+    color:#aaa;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Stop Guessing the Stock Market</h1>
-    <p>Trade with live charts, indicators, scanners and logic — not tips.</p>
-    <a href="#" class="btn">Start Free Analysis</a>
-    <a href="#" class="btn alt">Join Premium</a>
-</header>
+<nav>
+    <h2 style="color:#00e5ff;">Equity Enlarge</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="analysis.html">Analysis</a>
+        <a href="course.html">Courses</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
 
-<div class="interrupt">
-    ❌ Telegram tips fail <br>
-    ❌ YouTube noise confuses <br>
-    ❌ Instagram traders sell dreams <br><br>
-    ✅ We give you charts, data & logic
-</div>
+<section class="hero">
+    <h1>Trade With Data, Not Emotion</h1>
+    <p>
+        Equity Enlarge gives you powerful chart analysis, stock scanners, trading education
+        and premium market insights — built for serious Indian traders.
+    </p>
+    <a href="analysis.html"><button class="btn">View Market Analysis</button></a>
+    <a href="course.html"><button class="btn" style="margin-left:15px;">Start Learning</button></a>
+</section>
 
 <section class="section">
-    <h2>Everything a Trader Needs</h2>
-    <div class="features">
+    <h2>What We Offer</h2>
+    <div class="cards">
         <div class="card">
             <h3>📊 Chart Analysis</h3>
-            <p>Price action, indicators, volume and market structure.</p>
+            <p>Advanced technical analysis using indicators, price action and market structure.</p>
+            <a href="analysis.html">Explore →</a>
         </div>
         <div class="card">
-            <h3>🔍 Stock Scanner</h3>
-            <p>Find breakout, reversal and trend stocks instantly.</p>
+            <h3>🔍 Stock Scanners</h3>
+            <p>Find high-probability stocks using data-driven filters and breakout detection.</p>
+            <a href="analysis.html">Scan Now →</a>
         </div>
         <div class="card">
             <h3>🎓 Trading Courses</h3>
-            <p>Learn technical analysis from beginner to advanced.</p>
+            <p>Learn how professional traders think, manage risk and build profitable systems.</p>
+            <a href="course.html">View Courses →</a>
         </div>
         <div class="card">
             <h3>📩 Premium Newsletter</h3>
-            <p>High-probability trade setups delivered weekly.</p>
+            <p>Get market insights, setups and research delivered directly to your inbox.</p>
+            <a href="contact.html">Join Now →</a>
         </div>
     </div>
 </section>
 
-<section class="section">
-    <h2>How It Works</h2>
-    <p>We scan → filter → analyze → deliver structured trade plans.</p>
-</section>
-
 <div class="interrupt">
-    Want consistent trading instead of random profits?<br>
-    <a href="#" class="btn">Join EquityEnlarge Premium</a>
+    90% of traders lose money.  
+    We help you join the 10% who understand the market.
 </div>
 
+<section class="section">
+    <h2>Why Equity Enlarge?</h2>
+    <p>
+        We don't sell hype. We provide structured analysis, real trading education and disciplined
+        systems so you can trade with confidence.
+    </p>
+    <a href="about.html"><button class="btn">Learn More About Us</button></a>
+</section>
+
 <div class="footer">
-    <p>Equity Enlarge is an educational and analytical platform. We do not provide buy/sell recommendations. All information is for learning and research purposes only.</p>
+    <p>
+        <a href="disclaimer.html">Disclaimer</a> |
+        <a href="privacy.html">Privacy Policy</a>
+    </p>
     <p>© 2026 EquityEnlarge.in</p>
 </div>
 
