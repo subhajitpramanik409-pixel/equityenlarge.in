@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Equity Enlarge – Stock Scanner</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Scan NSE and BSE stocks using smart filters and technical logic.">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0b0f19;
+    color: #ffffff;
+}
+header {
+    padding: 60px 10%;
+    background: linear-gradient(135deg,#141e30,#243b55);
+    text-align: center;
+}
+header h1 {
+    font-size: 2.8rem;
+}
+header p {
+    color: #cfd8dc;
+    font-size: 1.2rem;
+}
+.section {
+    padding: 60px 10%;
+}
+.filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+.filter {
+    background: #131a2b;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 30px;
+}
+.card {
+    background: #131a2b;
+    padding: 25px;
+    border-radius: 15px;
+}
+.card h3 {
+    color: #00e5ff;
+}
+.interrupt {
+    background: #111827;
+    padding: 50px 10%;
+    text-align: center;
+    font-size: 1.4rem;
+}
+.footer {
+    background: #000;
+    padding: 40px 10%;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Smart Stock Scanner</h1>
+    <p>Let data find opportunities for you.</p>
+</header>
+
+<section class="section">
+    <h2>Scanner Filters</h2>
+    <div class="filters">
+        <div class="filter">Breakout Stocks</div>
+        <div class="filter">High Volume</div>
+        <div class="filter">Reversal Pattern</div>
+        <div class="filter">Trend Stocks</div>
+        <div class="filter">52 Week High</div>
+        <div class="filter">RSI Oversold</div>
+    </div>
+</section>
+
+<div class="interrupt">
+    Instead of searching 1,000 stocks — let the scanner show you the best.
+</div>
+
+<section class="section">
+    <h2>Live Scanner Results</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>INFY</h3>
+            <p>Pattern: Breakout</p>
+            <p>Strength: Strong</p>
+            <p>Volume: High</p>
+        </div>
+        <div class="card">
+            <h3>ICICI BANK</h3>
+            <p>Pattern: Trend Continuation</p>
+            <p>Strength: Medium</p>
+            <p>Volume: Normal</p>
+        </div>
+        <div class="card">
+            <h3>ADANI PORTS</h3>
+            <p>Pattern: Reversal</p>
+            <p>Strength: High</p>
+            <p>Volume: Increasing</p>
+        </div>
+    </div>
+</section>
+
+<div class="footer">
+    <p>Stock data is for analysis and educational purposes only.</p>
+    <p>© 2026 EquityEnlarge.in</p>
+</div>
+
+</body>
+</html>
