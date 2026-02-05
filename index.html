@@ -144,29 +144,27 @@ footer a{
 
 /* MOBILE */
 
+/* Mobile menu panel styling */
 @media(max-width:800px){
   .nav-links{
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    background:#020617;
-    flex-direction:column;
-    text-align:center;
-    display:none;
-    padding:20px 0;
-    border-top:1px solid rgba(255,255,255,0.05);
+    background: linear-gradient(180deg,#020617,#0f172a);
+    box-shadow:0 20px 40px rgba(0,0,0,0.7);
   }
 
   .nav-links a{
-    margin:15px 0;
-    font-size:1.1rem;
+    width:100%;
+    padding:15px 0;
+    color:#e5e7eb;
+    font-weight:600;
+    border-bottom:1px solid rgba(255,255,255,0.05);
   }
 
-  .menu-btn{
-    display:block;
+  .nav-links a:hover{
+    background:#020617;
+    color:#38bdf8;
   }
 }
+
 
 </style>
 </head>
