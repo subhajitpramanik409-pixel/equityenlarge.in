@@ -493,10 +493,31 @@
             margin-top: 3rem;
         }
 
+        .scanner-table-wrapper {
+            overflow-x: auto;
+            margin-top: 2rem;
+            border-radius: 12px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .scanner-table-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .scanner-table-wrapper::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+            border-radius: 10px;
+        }
+
+        .scanner-table-wrapper::-webkit-scrollbar-thumb {
+            background: var(--accent-green);
+            border-radius: 10px;
+        }
+
         .scanner-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 2rem;
+            min-width: 600px;
         }
 
         .scanner-table th {
@@ -732,6 +753,10 @@
                 text-align: center;
             }
 
+            .scanner-demo {
+                padding: 1.5rem;
+            }
+
             .scanner-table {
                 font-size: 0.85rem;
             }
@@ -739,6 +764,16 @@
             .scanner-table th,
             .scanner-table td {
                 padding: 0.8rem 0.5rem;
+                white-space: nowrap;
+            }
+
+            .stock-name {
+                min-width: 100px;
+            }
+
+            .signal-badge {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.6rem;
             }
 
             .newsletter-form {
@@ -747,6 +782,14 @@
 
             .newsletter-input {
                 width: 100%;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
             }
         }
 
@@ -809,7 +852,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="WhatsApp Image 2026-02-05 at 13.30.28.jpg" alt="Professional trader analyzing stock market charts and data" loading="eager">
+                <img src="WhatsApp_Image_2026-02-05_at_13_30_28.jpeg" alt="Professional trader analyzing stock market charts and data" loading="eager">
             </div>
         </div>
     </section>
@@ -925,56 +968,58 @@
             <p>AI-powered real-time market analysis updated every 5 minutes</p>
         </div>
         <div class="scanner-demo fade-in">
-            <table class="scanner-table">
-                <thead>
-                    <tr>
-                        <th>Stock</th>
-                        <th>Price</th>
-                        <th>Change</th>
-                        <th>Signal</th>
-                        <th>Strength</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="stock-name">RELIANCE</td>
-                        <td>₹2,445.30</td>
-                        <td class="positive">+2.4%</td>
-                        <td><span class="signal-badge signal-buy">BUY</span></td>
-                        <td class="positive">Strong</td>
-                    </tr>
-                    <tr>
-                        <td class="stock-name">TCS</td>
-                        <td>₹3,678.90</td>
-                        <td class="positive">+1.8%</td>
-                        <td><span class="signal-badge signal-buy">BUY</span></td>
-                        <td class="positive">Moderate</td>
-                    </tr>
-                    <tr>
-                        <td class="stock-name">HDFC BANK</td>
-                        <td>₹1,623.45</td>
-                        <td class="negative">-0.5%</td>
-                        <td><span class="signal-badge signal-hold">HOLD</span></td>
-                        <td>Neutral</td>
-                    </tr>
-                    <tr>
-                        <td class="stock-name">INFY</td>
-                        <td>₹1,534.20</td>
-                        <td class="positive">+3.2%</td>
-                        <td><span class="signal-badge signal-buy">BUY</span></td>
-                        <td class="positive">Very Strong</td>
-                    </tr>
-                    <tr>
-                        <td class="stock-name">ICICI BANK</td>
-                        <td>₹1,089.60</td>
-                        <td class="positive">+1.1%</td>
-                        <td><span class="signal-badge signal-buy">BUY</span></td>
-                        <td class="positive">Moderate</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary);">
-                Get full scanner access with our premium membership
+            <div class="scanner-table-wrapper">
+                <table class="scanner-table">
+                    <thead>
+                        <tr>
+                            <th>Stock</th>
+                            <th>Price</th>
+                            <th>Change</th>
+                            <th>Signal</th>
+                            <th>Strength</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="stock-name">RELIANCE</td>
+                            <td>₹2,445.30</td>
+                            <td class="positive">+2.4%</td>
+                            <td><span class="signal-badge signal-buy">BUY</span></td>
+                            <td class="positive">Strong</td>
+                        </tr>
+                        <tr>
+                            <td class="stock-name">TCS</td>
+                            <td>₹3,678.90</td>
+                            <td class="positive">+1.8%</td>
+                            <td><span class="signal-badge signal-buy">BUY</span></td>
+                            <td class="positive">Moderate</td>
+                        </tr>
+                        <tr>
+                            <td class="stock-name">HDFC BANK</td>
+                            <td>₹1,623.45</td>
+                            <td class="negative">-0.5%</td>
+                            <td><span class="signal-badge signal-hold">HOLD</span></td>
+                            <td>Neutral</td>
+                        </tr>
+                        <tr>
+                            <td class="stock-name">INFY</td>
+                            <td>₹1,534.20</td>
+                            <td class="positive">+3.2%</td>
+                            <td><span class="signal-badge signal-buy">BUY</span></td>
+                            <td class="positive">Very Strong</td>
+                        </tr>
+                        <tr>
+                            <td class="stock-name">ICICI BANK</td>
+                            <td>₹1,089.60</td>
+                            <td class="positive">+1.1%</td>
+                            <td><span class="signal-badge signal-buy">BUY</span></td>
+                            <td class="positive">Moderate</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+                📱 Swipe to see more • Get full scanner access with premium membership
             </p>
         </div>
     </section>
