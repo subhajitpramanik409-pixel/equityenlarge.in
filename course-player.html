@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Player - Equity Enlarge</title>
+    <meta name="description" content="Watch course lessons and master trading">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #000000;
+            --accent-green: #6CFA7C;
+            --accent-green-dim: #5ce56d;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-green);
+        }
+
+        /* Main Layout */
+        .player-container {
+            display: flex;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding-top: 70px;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 350px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            padding: 2rem 0;
+        }
+
+        .course-info {
+            padding: 0 2rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .course-info h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .lessons-list {
+            padding: 1rem 0;
+        }
+
+        .module-section {
+            margin-bottom: 1rem;
+        }
+
+        .module-header {
+            padding: 1rem 2rem;
+            background: rgba(108, 250, 124, 0.05);
+            border-left: 3px solid var(--accent-green);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .lesson-item {
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .lesson-item:hover {
+            background: rgba(108, 250, 124, 0.05);
+        }
+
+        .lesson-item.active {
+            background: rgba(108, 250, 124, 0.1);
+            border-left-color: var(--accent-green);
+        }
+
+        .lesson-item.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .lesson-icon {
+            font-size: 1.5rem;
+        }
+
+        .lesson-info {
+            flex: 1;
+        }
+
+        .lesson-title {
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .lesson-duration {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Video Player */
+        .video-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-primary);
+        }
+
+        .video-container {
+            background: #000;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .video-player {
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-locked {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .video-locked .lock-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-locked h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-locked p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: var(--accent-green);
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-green-dim);
+            transform: translateY(-2px);
+        }
+
+        /* Content Section */
+        .content-section {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .lesson-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .resources {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .resources h3 {
+            margin-bottom: 1rem;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: rgba(108, 250, 124, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-item a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        .navigation-btns {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-secondary {
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        /* Mobile */
+        @media (max-width: 968px) {
+            .player-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-height: 400px;
+            }
+
+            .video-section {
+                min-height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">⚡ Equity Enlarge</a>
+            <a href="dashboard.html" class="back-btn">
+                ← Back to Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <!-- Player Container -->
+    <div class="player-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="course-info">
+                <h2 id="courseTitle">Loading...</h2>
+                <div class="course-stats">
+                    <span id="totalLessons">0 lessons</span>
+                    <span>•</span>
+                    <span id="totalDuration">0 hours</span>
+                </div>
+            </div>
+
+            <div class="lessons-list" id="lessonsList">
+                <!-- Lessons will be loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-section">
+            <div class="video-container" id="videoContainer">
+                <!-- Video player or locked message will be shown here -->
+            </div>
+
+            <div class="content-section">
+                <div class="lesson-content" id="lessonContent">
+                    <h2 id="lessonTitle">Select a lesson to begin</h2>
+                    <p class="lesson-description" id="lessonDescription">
+                        Choose a lesson from the sidebar to start learning.
+                    </p>
+                </div>
+
+                <div class="navigation-btns" id="navigationBtns" style="display: none;">
+                    <button class="btn-secondary" onclick="previousLesson()">← Previous</button>
+                    <button class="btn-primary" onclick="nextLesson()">Next Lesson →</button>
+                </div>
+
+                <div class="resources" id="resourcesSection" style="display: none;">
+                    <h3>📁 Resources</h3>
+                    <div id="resourcesList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        // Get course ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const courseId = urlParams.get('course');
+        let currentLessonIndex = 0;
+        let courseLessons = [];
+
+        // Course data
+        const courses = {
+            foundation: {
+                title: 'Foundation Course',
+                totalLessons: 40,
+                duration: '15 hours',
+                modules: [
+                    {
+                        title: 'Module 1: Market Basics',
+                        lessons: [
+                            { title: 'Introduction to Stock Markets', duration: '12:30', videoUrl: 'sample1.mp4', description: 'Learn the fundamentals of how stock markets work, who the key participants are, and why markets exist.' },
+                            { title: 'Understanding Stock Exchanges', duration: '15:45', videoUrl: 'sample2.mp4', description: 'Deep dive into NSE, BSE, and how stock exchanges operate in India.' },
+                            { title: 'Order Types & Execution', duration: '18:20', videoUrl: 'sample3.mp4', description: 'Master different order types: Market, Limit, Stop-Loss, and how orders are executed.' },
+                            { title: 'Market Timings & Sessions', duration: '10:15', videoUrl: 'sample4.mp4', description: 'Understanding trading sessions, pre-open, and post-close activities.' }
+                        ]
+                    },
+                    {
+                        title: 'Module 2: Technical Analysis',
+                        lessons: [
+                            { title: 'Introduction to Charts', duration: '20:00', videoUrl: 'sample5.mp4', description: 'Learn to read candlestick charts and understand price movements.' },
+                            { title: 'Support & Resistance', duration: '22:30', videoUrl: 'sample6.mp4', description: 'Identify key levels where price tends to bounce or break through.' },
+                            { title: 'Trend Lines & Patterns', duration: '25:15', videoUrl: 'sample7.mp4', description: 'Draw trend lines and recognize common chart patterns.' },
+                            { title: 'Technical Indicators', duration: '28:45', videoUrl: 'sample8.mp4', description: 'Master RSI, MACD, and Moving Averages for better trading decisions.' }
+                        ]
+                    }
+                ]
+            },
+            pro: {
+                title: 'Pro Trader Program',
+                totalLessons: 80,
+                duration: '30 hours',
+                modules: [
+                    {
+                        title: 'Module 1: Advanced Technical Analysis',
+                        lessons: [
+                            { title: 'Elliott Wave Theory', duration: '35:20', videoUrl: 'pro1.mp4', description: 'Master wave counting and predict market movements using Elliott Wave principles.' },
+                            { title: 'Volume Profile Analysis', duration: '30:15', videoUrl: 'pro2.mp4', description: 'Use volume to identify key price levels and institutional activity.' },
+                            { title: 'Multiple Timeframe Analysis', duration: '28:40', videoUrl: 'pro3.mp4', description: 'Combine different timeframes for high-probability trade setups.' }
+                        ]
+                    },
+                    {
+                        title: 'Module 2: Options Trading',
+                        lessons: [
+                            { title: 'Options Fundamentals', duration: '40:00', videoUrl: 'pro4.mp4', description: 'Understanding calls, puts, and the Greeks (Delta, Gamma, Theta, Vega).' },
+                            { title: 'Options Strategies', duration: '45:30', videoUrl: 'pro5.mp4', description: 'Learn spreads, straddles, strangles, and iron condors.' },
+                            { title: 'Risk Management in Options', duration: '38:20', videoUrl: 'pro6.mp4', description: 'Manage risk and position sizing for options trading.' }
+                        ]
+                    }
+                ]
+            },
+            elite: {
+                title: 'Elite Mentorship',
+                totalLessons: 100,
+                duration: '50 hours',
+                modules: [
+                    {
+                        title: 'Module 1: Professional Trading Strategies',
+                        lessons: [
+                            { title: 'Institutional Trading Methods', duration: '50:00', videoUrl: 'elite1.mp4', description: 'Learn how professional traders and institutions approach the market.' },
+                            { title: 'Building Your Trading System', duration: '55:30', videoUrl: 'elite2.mp4', description: 'Create a personalized trading system that fits your style and goals.' },
+                            { title: 'Advanced Risk Management', duration: '48:15', videoUrl: 'elite3.mp4', description: 'Professional risk management techniques used by hedge funds.' }
+                        ]
+                    },
+                    {
+                        title: 'Module 2: Live Trading Sessions',
+                        lessons: [
+                            { title: 'Live Market Analysis #1', duration: '60:00', videoUrl: 'elite4.mp4', description: 'Watch real-time market analysis and trade execution.' },
+                            { title: 'Live Trading Session #1', duration: '90:00', videoUrl: 'elite5.mp4', description: 'Full trading session from pre-market to close.' },
+                            { title: 'Trade Review & Improvement', duration: '45:00', videoUrl: 'elite6.mp4', description: 'Analyze trades and learn from both wins and losses.' }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Check if user has access
+        const hasAccess = AuthSystem.requireCourseAccess(courseId);
+        
+        if (!courseId || !courses[courseId]) {
+            window.location.href = 'dashboard.html';
+        }
+
+        // Load course
+        function loadCourse() {
+            const course = courses[courseId];
+            if (!course) return;
+
+            document.getElementById('courseTitle').textContent = course.title;
+            document.getElementById('totalLessons').textContent = `${course.totalLessons} lessons`;
+            document.getElementById('totalDuration').textContent = course.duration;
+
+            // Flatten lessons
+            courseLessons = [];
+            course.modules.forEach(module => {
+                module.lessons.forEach(lesson => {
+                    courseLessons.push(lesson);
+                });
+            });
+
+            // Load lessons list
+            loadLessonsList(course);
+
+            // Load first lesson
+            if (hasAccess && courseLessons.length > 0) {
+                loadLesson(0);
+            } else if (!hasAccess) {
+                showLockedMessage();
+            }
+        }
+
+        // Load lessons list
+        function loadLessonsList(course) {
+            const lessonsList = document.getElementById('lessonsList');
+            lessonsList.innerHTML = '';
+
+            course.modules.forEach((module, moduleIndex) => {
+                const moduleHeader = document.createElement('div');
+                moduleHeader.className = 'module-header';
+                moduleHeader.textContent = module.title;
+                lessonsList.appendChild(moduleHeader);
+
+                module.lessons.forEach((lesson, lessonIndex) => {
+                    const globalIndex = course.modules.slice(0, moduleIndex).reduce((sum, m) => sum + m.lessons.length, 0) + lessonIndex;
+                    
+                    const lessonItem = document.createElement('div');
+                    lessonItem.className = 'lesson-item' + (hasAccess ? '' : ' locked');
+                    if (globalIndex === currentLessonIndex) {
+                        lessonItem.classList.add('active');
+                    }
+
+                    lessonItem.innerHTML = `
+                        <span class="lesson-icon">${hasAccess ? '▶️' : '🔒'}</span>
+                        <div class="lesson-info">
+                            <div class="lesson-title">${lesson.title}</div>
+                            <div class="lesson-duration">${lesson.duration}</div>
+                        </div>
+                    `;
+
+                    if (hasAccess) {
+                        lessonItem.onclick = () => loadLesson(globalIndex);
+                    }
+
+                    lessonsList.appendChild(lessonItem);
+                });
+            });
+        }
+
+        // Show locked message
+        function showLockedMessage() {
+            const videoContainer = document.getElementById('videoContainer');
+            videoContainer.innerHTML = `
+                <div class="video-locked">
+                    <div class="lock-icon">🔒</div>
+                    <h3>This Course is Locked</h3>
+                    <p>Purchase this course to access all video lessons and resources</p>
+                    <a href="courses.html" class="btn-primary">Unlock Course</a>
+                </div>
+            `;
+        }
+
+        // Load lesson
+        function loadLesson(index) {
+            if (!hasAccess) {
+                showLockedMessage();
+                return;
+            }
+
+            currentLessonIndex = index;
+            const lesson = courseLessons[index];
+
+            // Update lesson title and description
+            document.getElementById('lessonTitle').textContent = lesson.title;
+            document.getElementById('lessonDescription').textContent = lesson.description;
+
+            // Update video player
+            const videoContainer = document.getElementById('videoContainer');
+            videoContainer.innerHTML = `
+                <video class="video-player" controls autoplay>
+                    <source src="${lesson.videoUrl}" type="video/mp4">
+                    Your browser does not support the video tag.
+                    <div style="color: var(--text-secondary); padding: 2rem; text-align: center;">
+                        <p>📹 Video player placeholder</p>
+                        <p style="margin-top: 1rem;">In production, this would play: ${lesson.title}</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Duration: ${lesson.duration}</p>
+                    </div>
+                </video>
+            `;
+
+            // Show navigation buttons
+            document.getElementById('navigationBtns').style.display = 'flex';
+
+            // Update active lesson in sidebar
+            document.querySelectorAll('.lesson-item').forEach((item, i) => {
+                if (i === index) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Show resources (simulated)
+            const resourcesSection = document.getElementById('resourcesSection');
+            resourcesSection.style.display = 'block';
+            document.getElementById('resourcesList').innerHTML = `
+                <div class="resource-item">
+                    <span>📄 Lesson Notes.pdf</span>
+                    <a href="#" onclick="alert('Resource download coming soon!'); return false;">Download</a>
+                </div>
+                <div class="resource-item">
+                    <span>📊 Practice Charts.zip</span>
+                    <a href="#" onclick="alert('Resource download coming soon!'); return false;">Download</a>
+                </div>
+            `;
+        }
+
+        // Previous lesson
+        function previousLesson() {
+            if (currentLessonIndex > 0) {
+                loadLesson(currentLessonIndex - 1);
+            }
+        }
+
+        // Next lesson
+        function nextLesson() {
+            if (currentLessonIndex < courseLessons.length - 1) {
+                loadLesson(currentLessonIndex + 1);
+            } else {
+                alert('🎉 Congratulations! You\'ve completed this course!');
+            }
+        }
+
+        // Initialize
+        loadCourse();
+    </script>
+</body>
+</html>
