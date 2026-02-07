@@ -60,6 +60,7 @@
             font-weight: 700;
             color: var(--accent-green);
             letter-spacing: -0.5px;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -76,7 +77,8 @@
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent-green);
         }
 
@@ -92,18 +94,6 @@
             height: 2px;
             background: var(--text-primary);
             transition: all 0.3s;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
         }
 
         /* Hero Section */
